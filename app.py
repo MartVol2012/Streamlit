@@ -21,7 +21,33 @@ with tab1:
         st.image('https://i.pinimg.com/1200x/3e/9b/bf/3e9bbf8c2c3d701854e018da42af838b.jpg', width=300)
 
 with tab2:
-    st.info('У процессі розробки...')
+    import random
+    
+    if 'secret_number' not in st.session_state:
+        st.session_state.secret_number = random.randint(1, 100)
+        st.session_state.attempts = 0
+        st.session_state.game_over = False
+ 
+    st.subheader("🎲 Гра: Вгадай число від 1 до 100")
+    
+    user_guess = st.number_input("Твій варіант:", min_value=1, max_value=100, step=1)
+    
+    if st.button("Перевірити"):
+        st.session_state.attempts += 1
+        if user_guess < st.session_state.secret_number:
+            st.info("📈 Загадане число БІЛЬШЕ!")
+        elif user_guess > st.session_state.secret_number:
+            st.info("📉 Загадане число МЕНШЕ!")
+        else:
+            st.success(f"🎉 Перемога! Ти вгадав число {st.session_state.secret_number} за {st.session_state.attempts} спроб!")
+            st.session_state.game_over = True
+            
+    if st.button("Зіграти знову"):
+        st.session_state.secret_number = random.randint(1, 100)
+        st.session_state.attempts = 0
+        st.session_state.game_over = False
+        st.rerun()
+
 
 with tab3:
     st.header('Список моїх улюблених навчальних сайтів:')

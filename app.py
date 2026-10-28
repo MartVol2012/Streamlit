@@ -4,7 +4,7 @@ st.set_page_config(page_title='Мій додаток 67', page_icon='https://enc
 
 st.title('Салют! Сікс севен!')
 
-tab1, tab2 = st.tabs(['Про мене', 'Мій інструмент'])
+tab1, tab2, tab3= st.tabs(['Про мене', 'Мій інструмент', 'Корисні посилання'])
 
 with tab1:
     st.header('Знайомствo з автором')
@@ -21,4 +21,16 @@ with tab1:
         st.image('https://i.pinimg.com/1200x/3e/9b/bf/3e9bbf8c2c3d701854e018da42af838b.jpg', width=300)
 
 with tab2:
-      st.info('У процессі розробки...')
+    st.info('У процессі розробки...')
+
+with tab3:
+    st.header('Список моїх улюблених навчальних сайтів:')
+
+    col1, col2 = st.columns([1,1])
+    with col1:
+        st.markdown('- 🧐: [Вікіпедія](https://us.wikipedia.org/wiki/Main_Pagw)')
+        st.markdown('- 📺: [Youtube](https://www.youtube.com/)')
+
+    with col2:
+        st.markdown('- 🕹️: [YPT](https://www.yeolpumta.com/en/)')
+        st.markdown('- 📝: [Notion](https://www.notion.com/б)')
